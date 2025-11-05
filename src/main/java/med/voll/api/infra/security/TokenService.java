@@ -24,7 +24,7 @@ public class TokenService {
         try {
             var algoritmo = Algorithm.HMAC256(secret);
                 return JWT.create()
-                    .withIssuer("auth0")
+                    .withIssuer("API Voll.med")
                     .withSubject(usuario.getLogin())
                     .withExpiresAt(dataExpiracao()).sign(algoritmo);
         } catch (JWTCreationException exception){
@@ -33,8 +33,6 @@ public class TokenService {
     }
 
     public String getSubject(String tokenJWT) {
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJpc3MiOiJhdXRoMCJ9.AbIJTDMFc7yUa5MhvcP03nJPyCPzZtQcGEp-zWfOkEE";
-        DecodedJWT decodedJWT;
         try {
             var algoritmo = Algorithm.HMAC256(secret);
             return JWT.require(algoritmo)

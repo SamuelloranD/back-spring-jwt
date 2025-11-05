@@ -1,5 +1,6 @@
 package med.voll.api.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import med.voll.api.domain.paciente.Paciente;
 import med.voll.api.domain.paciente.PacienteRepository;
@@ -12,7 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("pacientes")
+@RequestMapping("/pacientes")
+@SecurityRequirement(name="bearer-key")
 public class PacienteController {
 
     @Autowired
@@ -42,6 +44,4 @@ public class PacienteController {
         var paciente = repository.getReferenceById(id);
         paciente.excluir();
     }
-
-
 }
